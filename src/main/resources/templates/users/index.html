@@ -10,7 +10,7 @@
 <!--    <a th:href="@{/users/delete(id=${user.getId()})}">Delete user</a>-->
 <!--    <a th:href="@{/users/edit(id=${user.getId()})}">Edit user</a>-->
 
-<div style="width: 300px" th:each="user : ${users}">
+<div th:each="user : ${users}">
     <a th:text="${user.getName()} + ', ' + ${user.getAge()} + ', ' + ${user.getEmail()}">user</a>
 
     <form th:method="GET" th:action="@{/users/edit(id=${user.getId()})}">
