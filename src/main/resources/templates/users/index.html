@@ -4,13 +4,43 @@
     <meta charset="UTF-8">
     <title>All users</title>
 </head>
+
 <body>
 
-<div th:each="user : ${users}">
+<!--    <a th:href="@{/users/delete(id=${user.getId()})}">Delete user</a>-->
+<!--    <a th:href="@{/users/edit(id=${user.getId()})}">Edit user</a>-->
+
+<div style="width: 300px" th:each="user : ${users}">
     <a th:text="${user.getName()} + ', ' + ${user.getAge()} + ', ' + ${user.getEmail()}">user</a>
-    <a th:href="@{/users/edit(id=${user.getId()})}">Edit user</a>
-    <a th:href="@{/users/delete(id=${user.getId()})}">Delete user</a>
+
+    <form th:method="GET" th:action="@{/users/edit(id=${user.getId()})}">
+        <input type="submit" value="Update">
+    </form>
+
+    <form th:method="DELETE" th:action="@{/users/delete(id=${user.getId()})}">
+        <input type="submit" value="Delete">
+    </form>
 </div>
+
+<!--<div style="width: 300px">-->
+<!--    <div class="t"> &lt;!&ndash; This is the wrapper div around the text input &ndash;&gt;-->
+<!--        <input type="text" />-->
+<!--    </div>-->
+<!--    <input type="button" value="Save" />-->
+<!--</div>-->
+
+
+<!--    <form th:method="GET" th:action="@{/users/edit(id=${user.getId()})}">-->
+<!--        <input type="submit" value="Update">-->
+<!--    </form>-->
+
+<!--    <form th:method="GET" th:action="@{/users/edit?{id}(id=${user.getId()})}">-->
+<!--        <input type="submit" value="Update">-->
+<!--    </form>-->
+
+<!--    <form method="GET" th:action="@{/users/edit?{id}(id=${user.getId()})}">-->
+<!--        <button type="submit" name="submit" value="value" class="link-button">This is a link that sends a POST request</button>-->
+<!--    </form>-->
 
 <br>
 <hr/>

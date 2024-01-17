@@ -3,44 +3,23 @@ package com.example.pp_3_1_2.services;
 import com.example.pp_3_1_2.models.User;
 import com.example.pp_3_1_2.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
-@Transactional(readOnly = true)
-public class UserService {
+public interface UserService {
 
-    private final UserRepository userRepository;
+    public List<User> findAll();
 
-    @Autowired
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
-
-    public List<User> findAll() {
-        return userRepository.findAll();
-    }
-
-    public User findOne(int id) {
-        return userRepository.findById(id).orElse(null);
-    }
+    public User findOne(int id);
 
     @Transactional
-    public void save(User user) {
-        userRepository.save(user);
-    }
+    public void save(User user);
 
     @Transactional
-    public void update(int id, User updatedUser) {
-        updatedUser.setId(id);
-        userRepository.save(updatedUser);
-    }
+    public void update(int id, User updatedUser);
 
     @Transactional
-    public void delete(int id) {
-        userRepository.deleteById(id);
-    }
+    public void delete(int id);
 
 }
