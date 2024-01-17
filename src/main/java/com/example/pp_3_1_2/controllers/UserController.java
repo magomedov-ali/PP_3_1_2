@@ -40,7 +40,7 @@ public class UserController {
         return "redirect:/users";
     }
 
-    @GetMapping("/edit")
+    @PostMapping("/edit")
     public String edit(@RequestParam("id") int id, Model model) {
         model.addAttribute("user", userService.findOne(id));
         return "users/edit";
